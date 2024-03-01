@@ -2,6 +2,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 def test_eight_components():
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # 配置Chrome无头模式
+    chrome_options.add_argument("--no-sandbox")  # 在Docker容器中运行时需要
+    chrome_options.add_argument("--disable-dev-shm-usage")  # 限制Docker使用的内存量
+    driver = webdriver.Chrome(options=chrome_options)
     driver = webdriver.Chrome()
 
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
