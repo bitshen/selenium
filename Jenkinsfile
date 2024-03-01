@@ -7,12 +7,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              sh 'pip install selenium'
+                sh 'pip install webdriver-manager'
+                sh 'pip install selenium'
             }
         }
         stage('Test') {
             steps {
-              sh 'python python_org_search.py'
+                sh 'python python_org_search.py'
             }
         }
     }
