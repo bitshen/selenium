@@ -5,12 +5,13 @@ pipeline {
         }
     }
     stages {
-        // stage('Build') {
-        //     steps {
-        //         //sh 'pip install webdriver-manager'
-        //         sh 'pip install selenium'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                //sh 'pip install webdriver-manager'
+                //sh 'pip install selenium'
+                sh 'mkdir /app/screenshots'
+            }
+        }
         stage('Test') {
             steps {
                 sh 'python firefox.py'
