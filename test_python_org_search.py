@@ -1,24 +1,31 @@
-import unittest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
-class PythonOrgSearch(unittest.TestCase):
+def test_eight_components():
+    driver = webdriver.Chrome()
 
-    def setUp(self):
-        self.driver = webdriver.Firefox()
+    driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
-    def test_search_in_python_org(self):
-        driver = self.driver
-        driver.get("http://www.python.org")
-        self.assertIn("Python", driver.title)
-        elem = driver.find_element_by_name("q")
-        elem.send_keys("pycon")
-        elem.send_keys(Keys.RETURN)
-        assert "No results found." not in driver.page_source
+    title = driver.title
+    print(f"页面标题为：'{title}'")  # 打印页面标题
+    assert title == "Web form", f"期望的页面标题为'Web form'，但实际为'{title}'"
 
+    driver.implicitly_wait(0.5)
 
-    def tearDown(self):
-        self.driver.close()
+    text_box = driver.find_element(by=By.NAME, value="my-text")
+    submit_button = driver.find_element(by=By.CSS_SELECTOR, value="button")
 
-if __name__ == "__main__":
-    unittest.main()
+    text_box.send_keys("Selenium")
+    print("在文本框中输入了'Selenium'")  # 打印操作信息
+    submit_button.click()
+    print("点击了提交按钮")  # 打印操作信息
+
+    message = driver.find_element(by=By.ID, value="message")
+    value = message.text
+    print(f"消息内容为：'{value}'")  # 打印消息内容
+    assert value == "Received!", f"期望的消息内容为'Received!'，但实际为'{value}'"
+
+    driver.quit()
+    print("测试完成，浏览器已关闭")  # 打印测试完成信息
+
+# 如果直接
