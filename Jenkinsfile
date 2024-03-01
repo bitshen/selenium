@@ -14,6 +14,10 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'python test_python_org_search.py'
+                sh """
+python test_python_org_search.py > output.txt
+cat output.txt
+"""
             }
         }
     }
