@@ -1,14 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 def test_eight_components():
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # 配置Chrome无头模式
     chrome_options.add_argument("--no-sandbox")  # 在Docker容器中运行时需要
     chrome_options.add_argument("--disable-dev-shm-usage")  # 限制Docker使用的内存量
-    driver = webdriver.Chrome(options=chrome_options)
-    driver = webdriver.Chrome()
+    
+    # 使用ChromeDriverManager自动管理chromedriver
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
@@ -36,5 +39,5 @@ def test_eight_components():
 
 # 如果直接运行此脚本，则执行测试
 if __name__ == "__main__":
-    print("test start")
+    print("测试开始")
     test_eight_components()
