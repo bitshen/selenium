@@ -1,27 +1,21 @@
-# test_python_org_search.py
-import unittest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
-class PythonOrgSearch(unittest.TestCase):
+driver = webdriver.Chrome()
 
-    def setUp(self):
-        # 初始化WebDriver
-        self.driver = webdriver.Firefox()
+driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
-    def test_search_in_python_org(self):
-        driver = self.driver
-        driver.get("http://www.python.org")
-        self.assertIn("Python", driver.title)
-        elem = driver.find_element("name", "q")
-        elem.clear()
-        elem.send_keys("pycon")
-        elem.send_keys(Keys.RETURN)
-        assert "No results found." not in driver.page_source
+title = driver.title
 
-    def tearDown(self):
-        # 关闭浏览器窗口
-        self.driver.close()
+driver.implicitly_wait(0.5)
 
-if __name__ == "__main__":
-    unittest.main()
+text_box = driver.find_element(by=By.NAME, value="my-text")
+submit_button = driver.find_element(by=By.CSS_SELECTOR, value="button")
+
+text_box.send_keys("Selenium")
+submit_button.click()
+
+message = driver.find_element(by=By.ID, value="message")
+text = message.text
+
+driver.quit()
