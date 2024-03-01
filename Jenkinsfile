@@ -5,12 +5,12 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
-            steps {
-                //sh 'pip install webdriver-manager'
-                sh 'pip install selenium'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         //sh 'pip install webdriver-manager'
+        //         sh 'pip install selenium'
+        //     }
+        // }
         stage('Test') {
             steps {
                 sh 'python test_python_org_search.py'
