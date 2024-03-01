@@ -23,6 +23,8 @@ def test_eight_components():
 
     text_box = driver.find_element(by=By.NAME, value="my-text")
     submit_button = driver.find_element(by=By.CSS_SELECTOR, value="button")
+    
+    driver.get_screenshot_as_file("/app/screenshots/example_com_screenshot.png")
 
     text_box.send_keys("Selenium")
     print("在文本框中输入了'Selenium'")  # 打印操作信息
