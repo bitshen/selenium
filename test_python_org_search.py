@@ -28,4 +28,7 @@ def test_eight_components():
     driver.quit()
     print("测试完成，浏览器已关闭")  # 打印测试完成信息
 
-# 如果直接
+# 如果直接运行此脚本，则执行测试
+if __name__ == "__main__":
+    print("test start")
+    test_eight_components()
