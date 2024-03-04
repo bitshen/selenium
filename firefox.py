@@ -1,13 +1,14 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options  # 修改为Firefox的Options
 from selenium.webdriver.common.by import By
 
 def test_eight_components():
     firefox_options = Options()
-    firefox_options.add_argument("--headless")
-    firefox_options.add_argument("--no-sandbox")
-    firefox_options.add_argument("--disable-dev-shm-usage")
+    firefox_options.add_argument("--headless")  # 配置Firefox无头模式
+    firefox_options.add_argument("--no-sandbox")  # 在Docker容器中运行时需要
+    firefox_options.add_argument("--disable-dev-shm-usage")  # 限制Docker使用的内存量
     
+    # 创建Firefox WebDriver实例
     driver = webdriver.Firefox(options=firefox_options)
     
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
