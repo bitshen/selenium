@@ -11,7 +11,7 @@ def test_eight_components():
     firefox_options.add_argument("--disable-dev-shm-usage")  # 限制Docker使用的内存量
     
     # 使用GeckoDriverManager自动管理Geckodriver
-    driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=firefox_options)
+    driver = webdriver.Firefox(executable_path='/app/drivers/geckodriver', options=firefox_options)
 
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
