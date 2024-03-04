@@ -14,7 +14,7 @@ pipeline {
         // }
         stage('Test') {
             steps {
-                sh 'python chrome.py'
+                sh 'python firefox.py'
             }
         }
     }
