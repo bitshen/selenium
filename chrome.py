@@ -11,7 +11,7 @@ def test_eight_components():
     chrome_options.add_argument("--disable-dev-shm-usage")  # 限制Docker使用的内存量
     
     # 使用ChromeDriverManager自动管理Chromedriver
-    driver = webdriver.Firefox(executable_path='/app/drivers/chromedriver', options=chrome_options)
+    driver = webdriver.Chrome(executable_path='/app/drivers/chromedriver', options=chrome_options)
 
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
