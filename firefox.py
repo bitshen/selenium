@@ -1,18 +1,15 @@
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options  # 导入Firefox的Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from webdriver_manager.firefox import GeckoDriverManager  # 导入GeckoDriverManager
-from selenium.webdriver.firefox.service import Service  # 导入Firefox的Service
 
 def test_eight_components():
     firefox_options = Options()
-    firefox_options.add_argument("--headless")  # 配置Firefox无头模式
-    firefox_options.add_argument("--no-sandbox")  # 在Docker容器中运行时需要
-    firefox_options.add_argument("--disable-dev-shm-usage")  # 限制Docker使用的内存量
+    firefox_options.add_argument("--headless")
+    firefox_options.add_argument("--no-sandbox")
+    firefox_options.add_argument("--disable-dev-shm-usage")
     
-    # 使用GeckoDriverManager自动管理Geckodriver
-    driver = webdriver.Firefox(executable_path='/app/drivers/geckodriver', options=firefox_options)
-
+    driver = webdriver.Firefox(options=firefox_options)
+    
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
     title = driver.title
