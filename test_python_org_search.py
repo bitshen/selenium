@@ -10,8 +10,8 @@ def test_eight_components():
     chrome_options.add_argument("--no-sandbox")  # 在Docker容器中运行时需要
     chrome_options.add_argument("--disable-dev-shm-usage")  # 限制Docker使用的内存量
     
-    # 使用ChromeDriverManager自动管理chromedriver
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    # 使用ChromeDriverManager自动管理Chromedriver
+    driver = webdriver.Firefox(executable_path='/app/drivers/chromedriver', options=chrome_options)
 
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
