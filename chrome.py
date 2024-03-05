@@ -8,7 +8,7 @@ def test_eight_components():
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(executable_path='/app/drivers/chromedriver', options=chrome_options)
     
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
