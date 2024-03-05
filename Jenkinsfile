@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'webtest-python:latest'
+            image 'amd-pytest:latest'
         }
     }
     stages {
