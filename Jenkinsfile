@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'amd-pytest:latest'
+            image 'selenium'
         }
     }
     stages {
